@@ -1,16 +1,11 @@
-//Testing
-
 
 /**
  * Benjamin Edwards
  * Class ID: 119
- * Assignment1
+ * Assignment2
  * 
- * Implements methods to add/delete elements
- * from a 10 element integer array.  It also supports the functionality
- * of receiving a string representation of the array.  Finally, it 
- * contains a method to return the count of the number of elements
- * currently in the array.
+ * Implements changes to add() and remove() methods from Assignment 1
+ * Adds methods append(), first(), and size() to SimpleList class
  * @author bened
  */
 
@@ -37,8 +32,19 @@ public SimpleList() {
  */
 public void add(int input) {
 	if(list[9] == null)
-		count++;	
-	for(int i = 9; i > 0; i--)
+		count++;
+	else {
+		count++;
+		int size = (int) (list.length * 1.5);
+		Integer[] templist = new Integer[size];
+		for(int i = 0; i < list.length; i++) {
+			templist[i] = list[i];
+		}
+		list = new Integer[size];
+		list = templist;
+	}	
+	
+	for(int i = list.length - 1; i > 0; i--)
 		list[i] = list[i-1];
 	list[0] = input;
 }
@@ -58,9 +64,34 @@ public void remove(int input) {
 			i = 10;
 		}			
 		
-	if (found == true) 
+	if (found == true) { 
 		for(int i = location; i < 9; i++) 
 			list[i] = list[i+1];
+		count--;
+	}
+	int emptyCount = 0;
+	for(int i = 0; i < list.length; i++)
+		if(list[i] == null)
+			emptyCount++;
+	//Checks for empty spaces > 25%, if true creates a new 
+	//array that has 25% empty spaces so that condition
+	// >25% is not satisfied
+	if((double)(emptyCount / list.length) > 0.25) {
+		int target = (int)(0.25/list.length); //The target is calculated by what the length of the list would need to be 
+		//to have exactly 25% empty spaces
+		int size = (int) (list.length - (target - emptyCount)); //the size is calculated by subtracting the difference between
+		//target and current emptyCount from the current list length
+		
+		int i = 0;
+		Integer[] templist = new Integer[size];
+		while(list[i] != null) {
+			templist[i] = list[i];
+			i++;
+		}
+		list = new Integer[size];
+		list = templist;
+	}
+	
 }
 
 /**
@@ -106,6 +137,42 @@ public int search(int input) {
 			i = 10;
 		}	
 	return temp;
+}
+
+public void append(int input) {
+	if(list[list.length-1] != null) {
+		//Method to increase length of list by 50%
+		int size = (int) (list.length * 1.5);
+		Integer[] templist = new Integer[size];
+		for(int i = 0; i < list.length; i++) {
+			templist[i] = list[i];
+		}
+		list = new Integer[size];
+		list = templist;
+	}
+	int position = 0;
+	int i = 0;
+	//searches for first empty position
+	while(list[i] != null) {
+		position++;		
+	}
+	//input goes to first empty space(at end of the list of numbers)
+	list[position] = input;
+	count++;
+}
+/**
+ * Returns the first element of the list
+ * @return
+ */
+public int first() {
+	return list[0];
+}
+/**
+ * Returns the number of locations in the list
+ * @return
+ */
+public int size() {
+	return list.length;
 }
 
 }
