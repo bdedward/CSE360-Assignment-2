@@ -129,35 +129,30 @@ public String toString() {
  * @param n integer input of the element to search for.
  * @return the index of the element, if found.
  */
-public int search(int input) {
+public int search(Integer input) {
 	int temp = -1;
+	
 	for(int i = 0; i < 10; i++) 
-		if(list[i] == input) {
-			temp = i;
-			i = 10;
-		}	
+		if(list[i] == input) 
+			return i;	
+	
 	return temp;
+	
 }
 
 public void append(int input) {
-	if(list[list.length-1] != null) {
+	if(list.length == count) {
 		//Method to increase length of list by 50%
 		int size = (int) (list.length * 1.5);
 		Integer[] templist = new Integer[size];
 		for(int i = 0; i < list.length; i++) {
 			templist[i] = list[i];
 		}
-		list = new Integer[size];
-		list = templist;
-	}
-	int position = 0;
-	int i = 0;
-	//searches for first empty position
-	while(list[i] != null) {
-		position++;		
-	}
-	//input goes to first empty space(at end of the list of numbers)
-	list[position] = input;
+		list = templist;	
+	}	
+	
+	//input goes to first empty space(at end of the list of numbers)	
+	list[count] = input;
 	count++;
 }
 /**

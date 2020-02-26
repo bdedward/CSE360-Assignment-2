@@ -118,5 +118,96 @@ public class SimpleListTest {
 		
 		assertEquals(expected_index, actual_index);		
 		
+		//Testing for non-existent value in list
+		int expected_index2 = -1;
+		int actual_index2 = test_search.search(6);
+		
+		assertEquals(expected_index2, actual_index2);
+		
+	}
+	
+	@Test
+	void Test_append() {
+		SimpleList test_append = new SimpleList();
+		
+		//Building array to test append()
+		test_append.add(5); test_append.add(3); test_append.add(9);
+		
+		Integer[] expected = {9, 3, 5, 2, null, null, null, null, null, null};
+		
+		test_append.append(2);
+		//Testing appended location to confirm list was updated properly
+		assertEquals(expected[3], test_append.list[3]);
+		
+		SimpleList T2 = new SimpleList();
+		
+		//Building second array to test append() on a full list
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		T2.add(9);
+		
+		Integer [] expected2 = {9,9,9,9,9,9,9,9,9,9,4,null,null,null,null};
+		
+		//Call append(4) on T2
+		T2.append(4);
+		//Testing appended location of a list that was full before append
+		assertEquals(expected2[10], T2.list[10]);		
+	}
+	
+	@Test
+	void Test_first() {
+		SimpleList test_first = new SimpleList();
+		
+		//Building array to use for testing first()
+		test_first.add(4);
+		test_first.add(3);
+		
+		Integer expected = 3;
+		Integer actual = test_first.first();
+		
+		assertEquals(actual, expected);
+		
+		//SimpleList test_first2 = new SimpleList();
+		
+		//Integer actual2 = test_first2.first();
+		//Testing actual2 against expected value "null"
+		//assertEquals(actual2, null);
+	}
+	
+	@Test
+	void Test_size() {
+		SimpleList test_size = new SimpleList();
+		
+		int expected = 10;
+		int actual = test_size.size();
+		
+		assertEquals(expected, actual);
+		
+		SimpleList test_size2 = new SimpleList();
+		
+		//Building array of 10 elements, then calling add(2) to increase its' size
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(8);
+		test_size2.add(2);
+		
+		int actual2 = test_size2.size();
+		int expected2 = 15;
+		
+		assertEquals(actual2, expected2);		
 	}
 }
