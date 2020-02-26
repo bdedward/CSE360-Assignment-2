@@ -4,6 +4,8 @@
  * Class ID: 119
  * Assignment2
  * 
+ * URL to GitHub: https://github.com/bdedward/CSE360-Assignment-2.git
+ * 
  * Implements changes to add() and remove() methods from Assignment 1
  * Adds methods append(), first(), and size() to SimpleList class
  * @author bened
