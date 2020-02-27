@@ -162,7 +162,20 @@ public void append(int input) {
  * @return
  */
 public int first() {
-	return list[0];
+	if(list[0] == null)
+		return -1;
+	else		
+		return list[0];
+}
+
+public int last() {	
+	int index = 0;
+	if(count > 0)
+		index = count - 1;
+	if(list[0] == null)
+		return -1;
+	else
+		return list[index];
 }
 /**
  * Returns the number of locations in the list

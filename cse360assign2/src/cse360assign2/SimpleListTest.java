@@ -165,20 +165,37 @@ public class SimpleListTest {
 	void Test_first() {
 		SimpleList test_first = new SimpleList();
 		
-		//Building array to use for testing first()
+		Integer expected1 = -1;
+		Integer actual1 = test_first.first();
+		
+		assertEquals(actual1, expected1);
+		
+		
 		test_first.add(4);
 		test_first.add(3);
 		
-		Integer expected = 3;
-		Integer actual = test_first.first();
+		Integer expected2 = 3;
+		Integer actual2 = test_first.first();
 		
-		assertEquals(actual, expected);
+		assertEquals(actual2, expected2);
+	}
+	
+	@Test
+	void Test_last() {
+		SimpleList test_last = new SimpleList();
 		
-		//SimpleList test_first2 = new SimpleList();
+		int expected1 = -1;
+		int actual1 = test_last.last();
 		
-		//Integer actual2 = test_first2.first();
-		//Testing actual2 against expected value "null"
-		//assertEquals(actual2, null);
+		assertEquals(expected1, actual1);
+		
+		SimpleList test_last2 = new SimpleList();
+		test_last2.add(1);
+		
+		int expected2 = 1;
+		int actual2 = test_last2.last();
+		
+		assertEquals(expected2, actual2);
 	}
 	
 	@Test
